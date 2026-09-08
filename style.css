@@ -25,7 +25,7 @@
   --text:'Outfit','Segoe UI',system-ui,sans-serif;
   --r:16px; --r-s:10px; --r-p:999px;
   --wrap:1220px;
-  --sec:96px;
+  --sec:72px;          /* memory: ~72px, not 128-174 */
   --shadow:0 1px 2px rgba(10,22,40,.05),0 16px 40px -18px rgba(10,22,40,.22);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -61,7 +61,7 @@ input:focus-visible,textarea:focus-visible{
 .b-d h2,.b-d h3{color:#fff}
 .b-d .kick{color:var(--glow)}
 .b-d .lede,.b-d .l-note{color:var(--on-d-mute)}
-.band-h{max-width:70ch;margin-bottom:48px}
+.band-h{max-width:70ch;margin-bottom:32px}
 .kick{font:500 .77rem/1 var(--text);letter-spacing:.14em;text-transform:uppercase;
   color:var(--fill-d);margin-bottom:12px}
 .lede{margin-top:16px;color:var(--muted);font-size:1.03rem}
@@ -202,7 +202,12 @@ input:focus-visible,textarea:focus-visible{
 .l-stat h3{margin:12px 0 8px;font-size:1rem}
 .l-stat span{display:block;font-size:.76rem;color:var(--muted)}
 
-.l-vs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+/* A 2-column block directly under a 3-column block never aligns. Both
+   now sit on the same 6-track rhythm so every vertical edge agrees. */
+.l-3{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.l-3>*{grid-column:span 2}
+.l-vs-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:16px}
+.l-vs-grid>*{grid-column:span 3}
 .l-vs{border:1px solid;border-radius:var(--r);padding:24px}
 .l-vs--us{background:var(--tint)!important;border-color:rgba(46,150,183,.4)!important}
 .b-d .l-vs--us{background:#123A4C!important;border-color:#1D5670!important}
