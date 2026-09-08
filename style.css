@@ -369,6 +369,9 @@ form{display:grid;gap:var(--s-s);min-width:0}
    .hero-command-center: one dark monitor (call transcript left, actions
    right, stats beneath), a four-tile channel strip under it, and toasts
    floating over its edges. Rebuilt in the approved palette. ---------- */
+/* Every injected icon carries .i and is bounded here, not by whatever
+   happens to contain it. An unbounded SVG fills its parent. */
+svg.i{width:16px;height:16px;flex:none}
 .cc{position:relative;min-width:0}
 .cc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;
   font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
@@ -446,7 +449,9 @@ form{display:grid;gap:var(--s-s);min-width:0}
   .cc-body{grid-template-columns:1fr}
   .cc-call{border-right:0;border-bottom:1px solid var(--rule-dark)}
   .cc-ch{grid-template-columns:1fr 1fr}
-  .cc-c:first-child,.cc-c:last-child{border-radius:0}
+  .cc-c:first-child{border-bottom-left-radius:0}
+  .cc-c:nth-child(3){border-bottom-left-radius:14px}
+  .cc-c:nth-child(4){border-bottom-right-radius:14px}
 }
 
 /* motion: transform and opacity only, no layout shift, off under reduced motion */
