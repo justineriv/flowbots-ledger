@@ -24,7 +24,9 @@ missing alt, zero unresolved anchors — measured at 320 / 390 / 768 / 1024 / 14
 ## Not wired
 - The lead form has no endpoint. It validates, then says plainly that nothing
   was sent and gives the phone number and booking link.
-- No analytics. The `dataLayer` events are written and start reporting the
-  moment a GA4 measurement ID or GTM container exists.
+- No analytics tag is installed. The page pushes named CTA events to
+  `window.dataLayer`, but nothing consumes them yet. A GTM container snippet
+  (or `gtag.js`) has to be added to the page and configured before any of it
+  reaches GA4. The events are ready to be picked up; they are not reporting.
 
 Design preview. Not for public indexing.

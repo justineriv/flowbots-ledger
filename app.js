@@ -132,8 +132,10 @@ if (form) {
 }
 
 /* ---- conversion events -------------------------------------------------
-   The calls are written and start reporting the moment a GA4 measurement ID
-   or GTM container exists. Nothing is sent until one does. */
+   These pushes go into window.dataLayer and stop there. Nothing consumes them
+   yet: a GTM container snippet (or gtag.js) has to be installed in the page
+   and configured to read these event names before anything reaches GA4.
+   Named and shaped so that wiring is a tag install, not a rewrite. */
 window.dataLayer = window.dataLayer || [];
 doc.addEventListener('click', function (e) {
   var a = e.target.closest('[data-track]');
