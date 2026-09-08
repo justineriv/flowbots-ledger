@@ -1,32 +1,41 @@
 # FlowBots.ai — ledger
 
-Design direction ledger. Asymmetric split hero, warm grey shell, editorial hairline rules, oversized Archivo display. Problem-first section order.
+White base with hard navy bands and light-grey rests, after the Groks reference. Ground cycles white / navy / grey.
 
 **Review link:** https://justineriv.github.io/flowbots-ledger/
 
-## Palette
-| Role | Hex | Measured |
-|---|---|---|
-| Ground | `#FFFFFF` | — |
-| Text / dark grounds | `#0A1628` | 18.13:1 on white |
-| Accent | `#2E96B7` | 3.41:1 on white (large text and UI only) |
-| CTA fill / links | `#267B96` | 4.82:1 both ways |
-| Text on tinted pills | `#22708A` | 4.85–5.60:1 |
+## Type
+DM Sans headings, Outfit body — the pairing FlowBots.ai itself declares
+(`--font-heading: 'DM Sans'`, `--font-body: 'Outfit'`). No other typefaces.
 
-`#38BADF` (the logo's own cyan) measures 2.27:1 on white and appears only
-inside the logo artwork. It never carries text.
+## Palette
+| Role | Hex |
+|---|---|
+| Accent | `#2E96B7` |
+| Deep ground / ink | `#0A1628` |
+| CTA fill / links on light | `#267B96` / `#22708A` |
+| Accent on dark grounds | `#38BADF` |
+| White | `#FFFFFF` |
 
 ## Verified
-Zero contrast failures, zero horizontal overflow, zero undersized tap targets,
-zero clipped button captions, zero empty boxes, zero heading skips, zero
-missing alt, zero unresolved anchors — measured at 320 / 390 / 768 / 1024 / 1440.
+- **Band rhythm:** 15 bands, 3 distinct grounds, **zero runs of three identical grounds.**
+  The tone is assigned in one `SEQUENCE` list and the builder asserts no two
+  adjacent bands match before it will write a file.
+- **Contrast:** every text/ground pairing clears 4.5:1.
+- **Footer links:** 23 destinations, each read from the live site's own markup
+  and checked for a 200. None guessed, none `href="#"`.
+- **Logo:** white mark on dark grounds, dark mark on light. Checked per design.
+
+## Not verified
+Layout was **not** checked in a browser — the preview pane was unresponsive.
+Colour, rhythm, links and type were verified statically from the built files;
+element overlap and responsive behaviour were not.
 
 ## Not wired
 - The lead form has no endpoint. It validates, then says plainly that nothing
   was sent and gives the phone number and booking link.
 - No analytics tag is installed. The page pushes named CTA events to
-  `window.dataLayer`, but nothing consumes them yet. A GTM container snippet
-  (or `gtag.js`) has to be added to the page and configured before any of it
-  reaches GA4. The events are ready to be picked up; they are not reporting.
+  `window.dataLayer`, but nothing consumes them yet: a GTM container snippet
+  (or `gtag.js`) has to be added and configured before any of it reaches GA4.
 
 Design preview. Not for public indexing.
