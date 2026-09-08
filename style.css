@@ -335,5 +335,17 @@ form{display:grid;gap:var(--s-s);min-width:0}
   width:48px;height:48px;border-radius:var(--r);border:1.5px solid var(--cta);color:var(--cta)}
 @media(max-width:1024px){.sticky{display:flex}body{padding-bottom:76px}}
 
+
+/* Preview-honesty notice. The form has no endpoint; say so before anyone types. */
+.warn{margin-top:var(--s-m);padding:14px 16px;border-radius:var(--r);
+  border:1.5px solid #E0A96D;background:#2A1F12;color:#F5D9B8;font-size:15px;line-height:1.5}
+.warn strong{color:#FFE9CC}
+.warn a{color:#FFCE8F;display:inline-flex;align-items:center;min-height:44px}
+form .warn{margin-top:0}
+
+/* "Example" marker on the operations log — it is illustrative, not a live feed. */
+.tagx{flex:none;padding:3px 8px;border-radius:4px;background:#2E96B7;color:#0A1628;
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+
 /* Inline phone links are conversion elements — give them a real hit area on mobile. */
 p a[href^="tel:"]{display:inline-flex;align-items:center;min-height:44px}

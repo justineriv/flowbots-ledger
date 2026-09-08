@@ -45,7 +45,7 @@
 | 03 | Side by side | What changes? | `BG-BASE` | Yes | — | Yes |
 | 04 | What we build | What do I actually get? | `BG-DARK` | Yes | — | No |
 | 05 | End to end | How does one job run? | `BG-BASE` | Yes | — | Yes |
-| 06 | Live operations | Does it really work unattended? | `BG-SOFT` | Yes | — | No |
+| 06 | A worked example | Does it really work unattended? | `BG-SOFT` | Yes | — | No |
 | 07 | Automations | Do you do my task? | `BG-BASE` | Yes | — | No |
 | 08 | What the data says | Is there evidence? | `BG-SOFT` | Yes | — | Yes |
 | 09 | Your industry | Do you know my trade? | `BG-BASE` | Yes | — | No |
@@ -170,7 +170,20 @@
 | Named integration platforms (ServiceTitan, Clio, Dentrix, HubSpot…) | Live site | 13 FAQ | — |
 | Stated price floor — $15,000, range to $300,000 | Live site | 10, 13 | Directly above primary CTA |
 
-**Every row traces to the live site.** Nothing was invented. The client notes record the previous build's numbers as cross-checked against the raw site capture, and this build reuses that copy without adding to it.
+**Every factual claim traces to the live site.** No figure, source, credential, price, name or outcome was invented, and the client notes record the previous build's numbers as cross-checked against the raw site capture.
+
+**But "verbatim" would be the wrong word for the page as a whole, and an earlier draft of this document used it.** Structural text was composed for this direction. The full inventory:
+
+| Composed for this build | What it is | Introduces a new factual claim? |
+|---|---|---|
+| All 15 rail labels — *Start here, The daily cost, Side by side, What we build, End to end, A worked example, Automations, What the data says, Your industry, The investment, Endorsement, Who we are, Questions, Free assessment, Start* | Navigation labels for the rail. Several match the live site's own section eyebrows; the rest are new | No |
+| Pricing figure-column labels — *Now / What it costs today*, *Now / Every unanswered call*, *Built / Once, around you* | Framing for the comparison rows | No |
+| `40+` hero stat | Recomposed from the live site's own CTA label *"See All 40+ Automations We Build"* | No |
+| Section 06 row headings and two connective sentences | Assembled from live-site transcript fragments into readable rows | No |
+| Preview notices on the assessment form | **Added deliberately** — see item 1 in §13 | No |
+| Footer line *"Runbook direction, not the live site"* | Preview marker | No |
+
+**Everything a visitor could act on — every price, statistic, source, name, integration and commitment — is the client's own.**
 
 **Regulated claims:** none. FlowBots is not a regulated niche and the page makes no legal, medical or dental claim. **Not routed to `/peach-editor` — see §14.**
 
@@ -277,7 +290,7 @@
 
 | # | Item | Type | What it affects | Needed from client |
 |---|---|---|---|---|
-| 1 | Lead form has no endpoint | **Risk — carried from previous rounds** | The assessment form validates, then states plainly that nothing was sent and gives the phone number. **No lead is delivered.** | A real form endpoint |
+| 1 | Lead form has no endpoint | **Risk — carried from previous rounds** | **Fixed in this build's disclosure order.** The page previously promised "a reply within one business day" above the form and only admitted nothing was sent *after* submission. A visible notice now sits above the form and inside it, so nobody types their details before being told. **No lead is delivered.** | A real form endpoint |
 | 2 | No GA4 ID or GTM container | **Risk — carried** | Every tracking event fires into nothing. No CTA work on this page can be evaluated | A measurement ID or container |
 | 3 | Objections inferred from the live site's FAQ, not from client interviews | Assumption | Section order and proof placement | Confirmation, or intake-call notes |
 | 4 | "Hanson" vs "Hansen" spelling | **Risk — open since 2026-08-27** | Founder name in §12 | Brian to confirm. Live-site spelling used |
@@ -287,6 +300,7 @@
 | 8 | Core Web Vitals unmeasured | **NOT VERIFIED** | Performance claims | A real test on the built site |
 | 9 | Integration logos not used in this build | Note | The previous rounds used FlowBots' own stylised approximations, not licensed assets. This direction avoids the question by not showing logos | — |
 | 10 | Viewed at 1280 only, in one engine | **Risk** | Visual confirmation | Someone should open it on a real phone |
+| 11 | Hero operations panel relabelled | Note | It previously carried a status dot, "Live operations" and a system path, which asserted real-time activity that does not exist. It now reads **"Example — one evening on a client system"** with an *Illustrative, not a live feed* marker. Content unchanged; the liveness framing removed | — |
 
 ---
 

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -58,8 +58,8 @@
       <div class="stat"><b>40+</b><span>Automations we build</span></div>
      </div>
     </div>
-    <div class="log" aria-label="Live operations log">
-     <div class="log-h"><span class="dot" aria-hidden="true"></span><span>Live operations</span><span class="path">flowbots.ai / ai-operations-center</span></div>
+    <div class="log" aria-label="Example operations log">
+     <div class="log-h"><span class="tagx">Example</span><span>One evening on a client system</span><span class="path">Illustrative, not a live feed</span></div>
      <div class="log-l"><b>After-hours call answered</b><time>Just now</time><span>Appointment booked for Wed 2 PM</span></div>
      <div class="log-l"><b>12 leads followed up via SMS</b><time>2m ago</time><span>3 appointments booked automatically</span></div>
      <div class="log-l"><b>Invoice #4291 processed</b><time>5m ago</time><span>Matched to PO, routed for approval</span></div>
@@ -168,7 +168,7 @@
 <!-- 06 — Live operations — BG-SOFT -->
 <section class="band b-soft" id="console">
  <div class="band-in">
-  <div class="rail"><div class="rail-n">06</div><div class="rail-l">Live operations</div></div>
+  <div class="rail"><div class="rail-n">06</div><div class="rail-l">A worked example</div></div>
   <div class="body">
    <h2 class="sec-h">One After-Hours Call, Start to Finish</h2>
    <p class="lede">The same system running on the live site: answered, qualified, booked, confirmed and synced before anyone opens a laptop.</p>
@@ -324,9 +324,11 @@
       <li>A reply within one business day</li>
       <li>Your data and workflows stay yours</li>
      </ul>
+     <p class="warn"><strong>This is a design preview.</strong> The form below is not connected to anything &mdash; it will not send your details and nobody will receive them. To get a real assessment, call <a href="tel:+15047174837">(504) 717-4837</a> or <a href="https://www.flowbots.ai/book-call/">book a discovery call</a>.</p>
      <p class="privacy" style="margin-top:var(--s-m)">Would rather talk it through now? <a href="tel:+15047174837">Call (504) 717-4837</a></p>
     </div>
-    <form id="af" novalidate>
+    <form id="af" novalidate aria-describedby="af-note">
+     <p class="warn" id="af-note">Preview only. Nothing you type here is sent or stored.</p>
      <div class="f2">
       <div class="fld"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required><span class="err">Please add your name.</span></div>
       <div class="fld"><label for="f-biz">Business name</label><input id="f-biz" name="biz" type="text" autocomplete="organization" required><span class="err">Please add your business name.</span></div>
@@ -337,7 +339,7 @@
      </div>
      <div class="fld"><label for="f-msg">What is eating your team&rsquo;s time? <span class="opt">(optional)</span></label><textarea id="f-msg" name="msg"></textarea></div>
      <button class="btn btn-s" type="submit" data-track="cta-assessment">Send My Free Assessment</button>
-     <p class="privacy">We use your details only to prepare and send your assessment. See our Privacy Policy.</p>
+     <p class="privacy">On the live site, details are used only to prepare and send your assessment. See our Privacy Policy.</p>
      <div class="sent" id="af-ok" hidden role="status"></div>
     </form>
    </div>
@@ -391,6 +393,6 @@
  <a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-sticky">Book My Free Discovery Call</a>
 </div>
 
-<script src="app.js?v=1"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>
