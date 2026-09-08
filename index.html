@@ -12,7 +12,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=4">
+<script>
+(function(){var d=document.documentElement;
+ var ok=!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ d.className=ok?'motion-on':'motion-off';})();
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,20 +57,48 @@
      </div>
      <p class="hero-micro">30 minutes. Free. No pressure. No sales pitch.</p>
      <p class="hero-trust"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></span><span><b>4.9</b> average client rating</span></p>
+     <ul class="uvps">
+      <li class="uvp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> HIPAA Compliant</li>
+      <li class="uvp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> SOC 2 Certified</li>
+      <li class="uvp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg> 35+ Years Combined AI &amp; Marketing Experience</li>
+     </ul>
      <div class="hero-stats">
       <div class="stat"><b>$126K</b><span>Lost per year to missed calls alone</span></div>
       <div class="stat"><b>4.9</b><span>Average client rating</span></div>
       <div class="stat"><b>40+</b><span>Automations we build</span></div>
      </div>
     </div>
-    <div class="log" aria-label="Example operations log">
-     <div class="log-h"><span class="tagx">Example</span><span>One evening on a client system</span><span class="path">Illustrative, not a live feed</span></div>
-     <div class="log-l"><b>After-hours call answered</b><time>Just now</time><span>Appointment booked for Wed 2 PM</span></div>
-     <div class="log-l"><b>12 leads followed up via SMS</b><time>2m ago</time><span>3 appointments booked automatically</span></div>
-     <div class="log-l"><b>Invoice #4291 processed</b><time>5m ago</time><span>Matched to PO, routed for approval</span></div>
-     <div class="log-l"><b>Payroll for 47 employees calculated</b><time>8m ago</time><span>Overtime flagged, exceptions sent to HR</span></div>
-     <div class="log-l"><b>CRM synced: 8 new contacts</b><time>12m ago</time><span>HubSpot to ServiceTitan to QuickBooks</span></div>
-     <div class="log-l"><b>47 review requests sent</b><time>15m ago</time><span>Post-service emails, 12 new 5-star reviews</span></div>
+    <div class="cc" aria-label="Example operations console">
+     <div class="cc-head"><span class="tagx">Example</span><span>One evening on a client system</span></div>
+     <div class="cc-toasts">
+     <div class="cc-t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></i><div><b>After-hours call answered</b><span>Appointment booked for Wed 2 PM</span></div><time>Just now</time></div>
+     <div class="cc-t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></i><div><b>12 leads followed up via SMS</b><span>3 appointments booked automatically</span></div><time>2m ago</time></div>
+     <div class="cc-t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></i><div><b>Invoice #4291 processed</b><span>Matched to PO, routed for approval</span></div><time>5m ago</time></div>
+     <div class="cc-t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></i><div><b>Payroll for 47 employees calculated</b><span>Overtime flagged, exceptions sent to HR</span></div><time>8m ago</time></div>
+     <div class="cc-t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg></i><div><b>CRM synced: 8 new contacts</b><span>HubSpot to ServiceTitan to QuickBooks</span></div><time>12m ago</time></div>
+     <div class="cc-t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></i><div><b>47 review requests sent</b><span>Post-service emails, 12 new 5-star reviews</span></div><time>15m ago</time></div>
+     </div>
+     <div class="cc-mon">
+      <div class="cc-bar"><em></em><em></em><em></em><i class="u">flowbots.ai / ai-operations-center</i><span class="lv"><s></s>LIVE</span></div>
+      <div class="cc-body">
+       <div class="cc-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><strong>(504) 555-8921</strong><span>After-hours call &middot; New customer</span><span class="t">0:47</span></div>
+       <div class="cc-line"><em>AI Agent</em><p>Good evening, Reliable Plumbing &amp; HVAC. How can I help you?</p></div>
+       <div class="cc-line"><em class="c">Caller</em><p>My AC stopped working. Can someone come out this week?</p></div>
+       <div class="cc-line"><em>AI Agent</em><p>I can get a tech out Wednesday at 2 PM or Thursday at 10 AM. Which works?</p></div>
+       <div class="cc-line"><em class="c">Caller</em><p>Wednesday at 2.</p></div>
+       <div class="cc-acts"><em>Actions taken</em>
+       <div class="cc-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><div><b>Service Call Booked</b><span>Wed, Mar 19 &middot; 2:00 PM &middot; Tech: Mike R.</span></div></div>
+       <div class="cc-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><div><b>SMS Confirmation Sent</b><span>To (504) 555-8921</span></div></div>
+       <div class="cc-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg><div><b>Synced to CRM</b><span>ServiceTitan &middot; New customer record</span></div></div>
+       <div class="cc-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><div><b>Dispatch Notified</b><span>Email to dispatch &middot; 9:42 PM</span></div></div>
+       </div>
+      </div>
+     </div>
+     <div class="cc-ch">
+     <div class="cc-c"><em><s></s>Voice AI</em><b>1,247 calls today</b></div>
+     <div class="cc-c"><em><s></s>SMS AI</em><b>384 convos active</b></div>
+     <div class="cc-c"><em><s></s>Workflows</em><b>89 tasks automated</b></div>
+     </div>
     </div>
    </div>
   </div>
@@ -116,8 +149,8 @@
      <div class="step"><time>7:44pm</time><span>CRM updated, dispatch notified</span></div>
     </div>
    </div>
-   <div class="hero-act"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-speed">Book My Free Discovery Call</a></div>
-   <p class="hero-micro">30 minutes. Free. We map your workflows on the call.</p>
+   <div class="act-c"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-speed">Book My Free Discovery Call</a>
+    <p class="hero-micro">30 minutes. Free. We map your workflows on the call.</p></div>
   </div>
  </div>
 </section>
@@ -160,7 +193,7 @@
     <div class="tr"><b>04</b><div><h3>It books the appointment</h3><p>Straight into your live calendar.</p></div></div>
     <div class="tr"><b>05</b><div><h3>Your team picks it up with context</h3><p>CRM updated before anyone opens a laptop.</p></div></div>
    </div>
-   <div class="hero-act"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-trace">Book My Free Discovery Call</a></div>
+   <div class="act-c"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-trace">Book My Free Discovery Call</a></div>
   </div>
  </div>
 </section>
@@ -218,7 +251,7 @@
     <div class="row"><div class="figure">$126K<small>Source: Numa / Phone2, AgentZap 2026</small></div><h3>Per Year</h3><p></p></div>
    </div>
    <p class="lede">Every stat above is sourced from published industry research. Your specific results depend on your business size, industry, and implementation scope.</p>
-   <div class="hero-act"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-proof">Book My Free Discovery Call</a></div>
+   <div class="act-c"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-proof">Book My Free Discovery Call</a></div>
   </div>
  </div>
 </section>
@@ -259,7 +292,7 @@
      <ul><li>AI system designed for YOUR exact workflows</li><li>We study your business before writing a line of code</li><li>We handle every integration, end to end</li><li>Dedicated team that monitors and optimizes</li><li>Your data stays yours. No lock-in. Cancel anytime.</li></ul></div>
    </div>
    <p class="note">Projects start at $15,000. Most clients see measurable return inside 90 days.</p>
-   <div class="hero-act"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-pricing">Book My Free Discovery Call</a></div>
+   <div class="act-c"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-pricing">Book My Free Discovery Call</a></div>
   </div>
  </div>
 </section>
@@ -270,8 +303,11 @@
   <div class="rail"><div class="rail-n">11</div><div class="rail-l">Endorsement</div></div>
   <div class="body">
    <h2 class="sec-h">Working with Kevin O&rsquo;Leary to Automate One of His Companies</h2>
-   <p class="lede">We automate tasks done on keyboards and phones, the repetitive work that drains your team&rsquo;s time. We don&rsquo;t replace human judgment, creativity, relationship-building, or the expertise that makes your business unique. AI handles the busywork. Your team handles the work that matters.</p>
-   <div class="hero-act"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-oleary">Book My Free Discovery Call</a></div>
+   <div class="endorse">
+    <img src="images/team-oleary.jpg" alt="Kevin O&rsquo;Leary" width="600" height="750" loading="lazy">
+    <p class="lede">We automate tasks done on keyboards and phones, the repetitive work that drains your team&rsquo;s time. We don&rsquo;t replace human judgment, creativity, relationship-building, or the expertise that makes your business unique. AI handles the busywork. Your team handles the work that matters.</p>
+   </div>
+   <div class="act-c"><a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-oleary">Book My Free Discovery Call</a></div>
   </div>
  </div>
 </section>
@@ -299,12 +335,12 @@
   <div class="body">
    <h2 class="sec-h">What People Ask Before They Book</h2>
    <div class="faq">
-    <details class="q"><summary><span class="tag">Getting started</span>How do I get started?<svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Book a free discovery call. We&rsquo;ll spend 30 minutes mapping your current workflows, identifying automation opportunities, and showing you exactly what&rsquo;s possible. No pressure. No sales pitch.</p></details>
-    <details class="q"><summary><span class="tag">Services</span>What exactly do you build?<svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Custom AI systems designed around your specific workflows. If a human in your company does it on a keyboard or phone, we can probably automate it. Common builds: AI voice agents, SMS follow-up systems, CRM automation, compliance workflows, dispatching, payroll processing, and multi-channel communication systems.</p></details>
-    <details class="q"><summary><span class="tag">Pricing</span>How much does it cost?<svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Projects range from $15,000 to $300,000 depending on scope. Pilot projects start at $15,000. AI voice usage is billed at $0.25/minute of actual call time. We give you a fixed-price quote before any work begins, no surprises.</p></details>
-    <details class="q"><summary><span class="tag">Timeline</span>How long does it take?<svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Most projects take 4&ndash;8 weeks. Complex enterprise builds take 8&ndash;16 weeks. We&rsquo;ll give you a clear timeline during your discovery call.</p></details>
-    <details class="q"><summary><span class="tag">Integrations</span>What systems do you integrate with?<svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>30+ platforms including ServiceTitan, Salesforce, HubSpot, GoHighLevel, Dentrix, Mindbody, Boulevard, Clio, and more. If your system has an API, we can connect to it. Custom integrations are included in project scope.</p></details>
-    <details class="q"><summary><span class="tag">General</span>Will AI replace my employees?<svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>No. We automate tasks done on keyboards and phones, the repetitive work that drains your team&rsquo;s time. We don&rsquo;t replace human judgment, creativity, relationship-building, or the expertise that makes your business unique. AI handles the busywork. Your team handles the work that matters.</p></details>
+    <details class="q"><summary><span class="tag">Getting started</span><span class="qt">How do I get started?</span><svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Book a free discovery call. We&rsquo;ll spend 30 minutes mapping your current workflows, identifying automation opportunities, and showing you exactly what&rsquo;s possible. No pressure. No sales pitch.</p></details>
+    <details class="q"><summary><span class="tag">Services</span><span class="qt">What exactly do you build?</span><svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Custom AI systems designed around your specific workflows. If a human in your company does it on a keyboard or phone, we can probably automate it. Common builds: AI voice agents, SMS follow-up systems, CRM automation, compliance workflows, dispatching, payroll processing, and multi-channel communication systems.</p></details>
+    <details class="q"><summary><span class="tag">Pricing</span><span class="qt">How much does it cost?</span><svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Projects range from $15,000 to $300,000 depending on scope. Pilot projects start at $15,000. AI voice usage is billed at $0.25/minute of actual call time. We give you a fixed-price quote before any work begins, no surprises.</p></details>
+    <details class="q"><summary><span class="tag">Timeline</span><span class="qt">How long does it take?</span><svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Most projects take 4&ndash;8 weeks. Complex enterprise builds take 8&ndash;16 weeks. We&rsquo;ll give you a clear timeline during your discovery call.</p></details>
+    <details class="q"><summary><span class="tag">Integrations</span><span class="qt">What systems do you integrate with?</span><svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>30+ platforms including ServiceTitan, Salesforce, HubSpot, GoHighLevel, Dentrix, Mindbody, Boulevard, Clio, and more. If your system has an API, we can connect to it. Custom integrations are included in project scope.</p></details>
+    <details class="q"><summary><span class="tag">General</span><span class="qt">Will AI replace my employees?</span><svg class="chev ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>No. We automate tasks done on keyboards and phones, the repetitive work that drains your team&rsquo;s time. We don&rsquo;t replace human judgment, creativity, relationship-building, or the expertise that makes your business unique. AI handles the busywork. Your team handles the work that matters.</p></details>
    </div>
   </div>
  </div>
@@ -375,6 +411,7 @@
  <div class="wrap">
   <div class="foot-g">
    <div>
+    <a class="foot-logo" href="#top" aria-label="FlowBots.ai home"><svg width="150" height="28" viewBox="0 0 320 60" role="img" aria-label="flowbots.ai" xmlns="http://www.w3.org/2000/svg"><g transform="translate(2 4)"><path stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5" d="M26 0v8"/><circle cx="26" r="3" fill="#38BADF"/><rect width="44" height="36" x="4" y="10" fill="#FFFFFF" rx="12"/><rect width="6" height="12" y="22" fill="#FFFFFF" rx="3"/><rect width="6" height="12" x="46" y="22" fill="#FFFFFF" rx="3"/><rect width="28" height="16" x="12" y="18" fill="#071120" rx="6"/><rect width="7" height="10" x="16" y="21" fill="#38BADF" rx="3"/><rect width="7" height="10" x="29" y="21" fill="#38BADF" rx="3"/><path stroke="#071120" stroke-linecap="round" stroke-width="2" d="M19 40h14"/></g><text x="62" y="40" fill="#FFFFFF" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" letter-spacing="-.5">flowbots<tspan fill="#38BADF">.ai</tspan></text></svg></a>
     <h3>Custom-Built AI, Fixed-Price, Cancel Anytime</h3>
     <p class="blurb">We don&rsquo;t sell software. We build AI systems custom-designed around how your business actually runs.</p>
     <p style="margin-top:var(--s-s)"><a href="tel:+15047174837">(504) 717-4837</a></p>
@@ -393,6 +430,6 @@
  <a class="btn btn-p" href="https://www.flowbots.ai/book-call/" data-track="cta-sticky">Book My Free Discovery Call</a>
 </div>
 
-<script src="app.js?v=2"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
