@@ -133,6 +133,14 @@ ul{margin:0;padding:0;list-style:none}
   transform:rotate(180deg);white-space:nowrap}
 .rail::after{content:"";position:absolute;left:0;top:34px;bottom:0;width:1px;background:var(--rule)}
 .body{min-width:0}
+/* Sections 02-15, 2026-09-15 (Justine): the number column runs out to the
+   hero's 1440 frame so every number lines up with "01", while the content
+   keeps its 1160 position. The two 1fr spacers split whatever the wider
+   frame adds, so the content column lands exactly where it was; at or below
+   1160 they collapse to 0 and the grid is the old rail | content. */
+.band:not(.hero) .band-in{max-width:var(--wrap-hero);
+  grid-template-columns:var(--rail) minmax(0,1fr) minmax(0,calc(var(--wrap) - 2 * var(--s-m) - var(--rail))) minmax(0,1fr)}
+.band:not(.hero) .body{grid-column:3}
 .lede{margin-top:var(--s-m);max-width:62ch;margin-left:auto;margin-right:auto;font-size:18px;color:var(--ink-2)}
 /* Section head: centred band. A 22ch heading in a 1000px column left 464px
    of dead width beside every H2 on the page. */
@@ -161,6 +169,8 @@ ul{margin:0;padding:0;list-style:none}
 
 @media(max-width:760px){
   .band-in{grid-template-columns:1fr;padding:var(--s-xl) var(--s-m)}
+  .band:not(.hero) .band-in{grid-template-columns:1fr}
+  .band:not(.hero) .body{grid-column:auto}
   .rail{display:flex;align-items:center;gap:10px;padding:0 0 var(--s-m)}
   .rail-l{writing-mode:horizontal-tb;transform:none;margin-top:0}
   .rail::after{display:none}
