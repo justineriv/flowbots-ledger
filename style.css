@@ -197,13 +197,16 @@ ul{margin:0;padding:0;list-style:none}
 .hero-trust b{font-weight:700;color:var(--ink)}
 .stars{display:inline-flex;gap:2px;color:var(--cta)}
 .stars svg{width:15px;height:15px}
+/* 2026-09-15, Justine: the UVP pills moved up under the rating line, into
+   the space that sat empty beneath the text column, and the stats row now
+   stands alone in this strip, centred on the full hero width. */
+.hero-grid .uvps{margin-top:var(--s-l)}
 .hero-foot{margin-top:var(--s-xl);padding-top:var(--s-m);border-top:1px solid var(--rule);
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-l) var(--s-xl);align-items:center}
-.hero-stats{display:flex;gap:var(--s-xl)}
-@media(max-width:860px){.hero-foot{grid-template-columns:1fr;gap:var(--s-m)}
-  .hero-stats{gap:var(--s-l)}}
+  display:flex;justify-content:center}
+.hero-stats{display:flex;justify-content:center;gap:var(--s-xl);text-align:center}
+@media(max-width:860px){.hero-stats{gap:var(--s-l)}}
 .stat b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em}
-.stat span{display:block;margin-top:4px;font-size:14px;color:var(--ink-3);max-width:20ch}
+.stat span{display:block;margin:4px auto 0;font-size:14px;color:var(--ink-3);max-width:20ch}
 
 /* run log — the hero's right column */
 .log{border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;background:#fff}
