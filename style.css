@@ -30,6 +30,10 @@
      the dead width fixed on 2026-09-08. */
   --rail:84px;
   --wrap:1160px;
+  /* Hero and header only, approved by Justine 2026-09-15: at 1160 the hero
+     sat in a band with ~360px of empty white each side on an 1880px screen.
+     Sections below keep --wrap. */
+  --wrap-hero:1440px;
   --r:6px;
   --r-lg:10px;
   --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -100,6 +104,7 @@ ul{margin:0;padding:0;list-style:none}
   backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--rule)}
 .nav-in{display:flex;align-items:center;gap:var(--s-m);height:74px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--s-m)}
+.nav .nav-in{max-width:var(--wrap-hero)}
 .brand{display:flex;align-items:center;flex:none;min-height:44px}
 .nav-links{display:flex;gap:26px;margin-left:auto;font-size:15px;font-weight:500}
 .nav-links a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none}
@@ -163,8 +168,12 @@ ul{margin:0;padding:0;list-style:none}
 }
 
 /* ---------- Hero ---------- */
-.hero .band-in{padding-top:var(--s-2xl);padding-bottom:var(--s-2xl)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-l);align-items:start}
+.hero .band-in{max-width:var(--wrap-hero);padding-top:var(--s-2xl);padding-bottom:var(--s-2xl)}
+/* 42 / 58 only from 1440 up. Measured: at 1361 the 42% column was 487px and
+   the H1 broke onto four lines, pushing the trust line from 740 to 874px.
+   At 1440 it is 519px and holds three. Below that it stays 50 / 50. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:var(--s-l);align-items:start}
+@media(max-width:1439px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .kicker{display:inline-block;padding:6px 12px;border-radius:999px;background:#E6EFF3;
   color:var(--pill);font-size:13px;font-weight:600;letter-spacing:.01em}
 .hero h1{margin-top:var(--s-m)}

@@ -70,7 +70,11 @@
 
 **Token scale** (desktop / tablet / mobile): `SPACE-XS` 8/8/8 · `SPACE-S` 16/16/12 · `SPACE-M` 28/24/20 · `SPACE-L` 48/40/32 · `SPACE-XL` 72/56/48 · `SPACE-2XL` 104/80/64
 
-**Revised 2026-09-15 at Justine's request ("too tight, especially the hero").** `SPACE-L`, `SPACE-XL` and `SPACE-2XL` went up one step on all three columns. `SPACE-M` went up on desktop only (24 to 28). Its tablet (24) and mobile (20) values are unchanged, because `SPACE-M` is also the side gutter and widening it on small screens would narrow the content. `SPACE-XS` and `SPACE-S` are unchanged. The container went from 1080 to 1160px (Justine's choice of three options). The hero now splits 50/50 and stacks into one column below 1181px, not 1025, so the console never runs narrower than 486px beside the text. The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 64/48/40 · `SPACE-2XL` 96/72/56.
+**Revised 2026-09-15 at Justine's request ("too tight, especially the hero").** `SPACE-L`, `SPACE-XL` and `SPACE-2XL` went up one step on all three columns. `SPACE-M` went up on desktop only (24 to 28). Its tablet (24) and mobile (20) values are unchanged, because `SPACE-M` is also the side gutter and widening it on small screens would narrow the content. `SPACE-XS` and `SPACE-S` are unchanged. The container went from 1080 to 1160px (Justine's choice of three options). The hero stacks into one column below 1181px, not 1025, so the console never runs narrower than about 486px beside the text.
+
+**Hero widened, second revision the same day** ("the huge space on either side looks like a sore thumb"). **The hero and the header now run to 1440px** (`--wrap-hero`). Sections 02–15 stay at 1160. Justine chose 1440 over 1600 or full width, a 42 / 58 text-to-console split, and the header plus the hero's rail widening with it. **The split is 42 / 58 from 1440px up** and 50 / 50 from 1181 to 1439. At 1361 a 42% column measured 487px and broke the H1 onto four lines. **Measured on an 1880px screen:** 240px of margin each side (was about 360), text column 526px, console 726px.
+
+The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 64/48/40 · `SPACE-2XL` 96/72/56.
 
 | # | Section | Top | Bottom | Gap: related | Gap: groups | Desktop | Mobile |
 |---|---|---|---|---|---|---|---|
@@ -80,7 +84,7 @@
 
 **`SPACE-2XL` on the hero, documented reason:** it is the only section carrying two full content columns and it sets the page's opening rhythm. Section 02 sits at `SPACE-XL`, so the combined band is 176px desktop / 112px mobile — no adjacent `SPACE-2XL` pair.
 
-**Hero declaration:** content-driven height. **`100vh` not used.** Measured 2026-09-15 at 1440 × 900: the hero band is 1301px including the UVP and stats strip beneath both columns. The two-column group ends at 1080px.
+**Hero declaration:** content-driven height. **`100vh` not used.** Measured 2026-09-15 after the hero was widened, at 1440 × 900: the primary CTA ends at 660px and the trust line at 740px, both above the fold. The hero's total band height was not re-measured after widening, and the earlier 1301px figure was removed rather than carried over.
 
 **Fold at 375 × 812 — measured, not estimated:**
 
