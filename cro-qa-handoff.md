@@ -70,7 +70,7 @@
 
 **Token scale** (desktop / tablet / mobile): `SPACE-XS` 8/8/8 · `SPACE-S` 16/16/12 · `SPACE-M` 28/24/20 · `SPACE-L` 48/40/32 · `SPACE-XL` 72/56/48 · `SPACE-2XL` 104/80/64
 
-**Revised 2026-09-15 at Justine's request ("too tight, especially the hero").** Every token except `SPACE-XS` and `SPACE-S` went up one step. The container went from 1080 to 1160px (Justine's choice of three options). The hero now splits 50/50 and stacks into one column below 1181px, not 1025, so the console never runs narrower than 486px beside the text. The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 64/48/40 · `SPACE-2XL` 96/72/56.
+**Revised 2026-09-15 at Justine's request ("too tight, especially the hero").** `SPACE-L`, `SPACE-XL` and `SPACE-2XL` went up one step on all three columns. `SPACE-M` went up on desktop only (24 to 28). Its tablet (24) and mobile (20) values are unchanged, because `SPACE-M` is also the side gutter and widening it on small screens would narrow the content. `SPACE-XS` and `SPACE-S` are unchanged. The container went from 1080 to 1160px (Justine's choice of three options). The hero now splits 50/50 and stacks into one column below 1181px, not 1025, so the console never runs narrower than 486px beside the text. The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 64/48/40 · `SPACE-2XL` 96/72/56.
 
 | # | Section | Top | Bottom | Gap: related | Gap: groups | Desktop | Mobile |
 |---|---|---|---|---|---|---|---|
