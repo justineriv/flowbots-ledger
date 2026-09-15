@@ -68,7 +68,9 @@
 
 ## 4. Spacing and Density Map — Gate 2
 
-**Token scale** (desktop / tablet / mobile): `SPACE-XS` 8/8/8 · `SPACE-S` 16/16/12 · `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 64/48/40 · `SPACE-2XL` 96/72/56
+**Token scale** (desktop / tablet / mobile): `SPACE-XS` 8/8/8 · `SPACE-S` 16/16/12 · `SPACE-M` 28/24/20 · `SPACE-L` 48/40/32 · `SPACE-XL` 72/56/48 · `SPACE-2XL` 104/80/64
+
+**Revised 2026-09-15 at Justine's request ("too tight, especially the hero").** Every token except `SPACE-XS` and `SPACE-S` went up one step. The container went from 1080 to 1160px (Justine's choice of three options). The hero now splits 50/50 and stacks into one column below 1181px, not 1025, so the console never runs narrower than 486px beside the text. The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 64/48/40 · `SPACE-2XL` 96/72/56.
 
 | # | Section | Top | Bottom | Gap: related | Gap: groups | Desktop | Mobile |
 |---|---|---|---|---|---|---|---|
@@ -76,20 +78,19 @@
 | 02–15 | All others | `SPACE-XL` | `SPACE-XL` | `SPACE-S`–`SPACE-M` | `SPACE-L` | PASS | PASS |
 | — | Footer | `SPACE-XL` | `SPACE-L` | `SPACE-S` | `SPACE-L` | PASS | PASS |
 
-**`SPACE-2XL` on the hero, documented reason:** it is the only section carrying two full content columns and it sets the page's opening rhythm. Section 02 sits at `SPACE-XL`, so the combined band is 160px desktop / 96px mobile — no adjacent `SPACE-2XL` pair.
+**`SPACE-2XL` on the hero, documented reason:** it is the only section carrying two full content columns and it sets the page's opening rhythm. Section 02 sits at `SPACE-XL`, so the combined band is 176px desktop / 112px mobile — no adjacent `SPACE-2XL` pair.
 
-**Hero declaration:** content-driven height. **`100vh` not used.** Desktop hero resolves to roughly 62vh at a 900px viewport.
+**Hero declaration:** content-driven height. **`100vh` not used.** Measured 2026-09-15 at 1440 × 900: the hero band is 1301px including the UVP and stats strip beneath both columns. The two-column group ends at 1080px.
 
 **Fold at 375 × 812 — measured, not estimated:**
 
 | Element | Bottom edge |
 |---|---|
-| H1 | 360px |
-| Supporting line | 532px |
-| Primary CTA | 600px |
-| Risk-reducing microcopy | 696px |
-| **Trust element** (4.9 rating) | **732px** |
+| Primary CTA | 626px *(was 600px before the 2026-09-15 spacing revision)* |
+| **Trust element** (4.9 rating) | **758px** *(was 732px)* |
 | Fold | **812px** |
+
+*Only the CTA and trust edges were re-measured on 2026-09-15. The H1, supporting line and microcopy rows from the earlier measurement were removed rather than carried over as if still current.*
 
 **Gate 2 verdict:** `PASS`
 **Evidence:** every section's padding and gaps come from the token scale — no raw pixel values in the stylesheet's section rules. Nothing exceeds `SPACE-2XL`. Mobile uses its own token column throughout. CTA-to-supporting-text gap is `SPACE-S`/`SPACE-M` at all three primary placements.
