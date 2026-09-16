@@ -89,9 +89,34 @@
     });
   }
 
+  /* ---- sticky bar reveal + scroll depth.
+         The bar is shown only once the hero's primary CTA has left the
+         viewport. At the top of the page that CTA is on screen, so the bar has
+         no job there and would cover the hero trust line. Body padding is
+         identical in both states, so nothing shifts.
+
+         The state must match the CTA's visibility at ALL times, and a scroll
+         event is not the only way the page moves. A hash jump on load, an
+         in-page anchor, and a back/forward restore each reposition the page
+         without firing one. Binding the sync to scroll alone left the bar
+         hidden for anyone who did not arrive at the top. ---- */
+  var heroCta = document.querySelector('[data-track="cta-hero"]');
+  var bar = document.querySelector('.sticky');
+  var syncBar = function () {
+    if (!heroCta || !bar) return;
+    bar.classList.toggle('is-on', heroCta.getBoundingClientRect().bottom <= 0);
+  };
+  /* A hash jump repositions the page after the current frame, so read again
+     once layout has settled rather than trusting the first measurement. */
+  var syncBarSettled = function () {
+    syncBar();
+    window.requestAnimationFrame(syncBar);
+  };
+
   /* ---- scroll depth ---- */
   var marks = [25, 50, 75, 100], hit = {};
   var onScroll = function () {
+    syncBar();
     var h = document.documentElement;
     var max = h.scrollHeight - h.clientHeight;
     if (max <= 0) return;
@@ -109,4 +134,9 @@
     ticking = true;
     window.requestAnimationFrame(function () { onScroll(); ticking = false; });
   }, { passive: true });
+  window.addEventListener('resize', syncBar, { passive: true });
+  window.addEventListener('hashchange', syncBarSettled, { passive: true });
+  window.addEventListener('pageshow', syncBarSettled, { passive: true });
+  window.addEventListener('load', syncBarSettled);
+  syncBarSettled();
 })();

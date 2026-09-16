@@ -16,6 +16,9 @@
   --ink-3:#5F7186;        /* 5.01:1 on white, 4.75:1 on BG-SOFT */
   --on-dark:#FFFFFF;      /* 18.13:1 on navy  */
   --on-dark-2:#A9BED2;    /* 9.42:1 on navy   */
+  --ink-accent:#0E2334;   /* 4.71:1 on BG-ACCENT. The rail's ink on the accent
+                             band. Kept lighter than --ink so the rail stays
+                             quieter than the heading it sits beside. */
   --cta:#267B96;          /* 4.82:1 both ways */
   --pill:#22708A;         /* 4.85:1 on tint   */
   --art:#38BADF;          /* artwork only     */
@@ -59,6 +62,11 @@ ul{margin:0;padding:0;list-style:none}
 .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 18px;z-index:200}
 .skip:focus{left:8px;top:8px}
 :focus-visible{outline:3px solid var(--cta);outline-offset:2px;border-radius:3px}
+/* --cta is 1.41:1 on BG-ACCENT, below the 3:1 a focus indicator needs. The 2px
+   offset means the ring abuts the band on both edges, so the band is what it has
+   to be seen against. --ink gives 5.32:1 there. The other four grounds pass on
+   --cta (white 4.82, soft 4.39, dark 3.76, footer 3.92) and are left alone. */
+.on-accent :focus-visible{outline-color:var(--ink)}
 
 /* ---------- CTA component. One spec, three ground variations. ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -163,7 +171,7 @@ ul{margin:0;padding:0;list-style:none}
 .on-dark .lede{color:var(--on-dark-2)}
 .on-dark a{color:var(--art-ink)}
 .on-accent{color:var(--ink)}
-.on-accent .rail-n,.on-accent .rail-l{color:#12303F}
+.on-accent .rail-n,.on-accent .rail-l{color:var(--ink-accent)}
 .on-accent .rail::after{background:rgba(10,22,40,.3)}
 .on-accent .lede{color:#0E2634}
 
@@ -405,7 +413,18 @@ form{display:grid;gap:var(--s-s);min-width:0}
 .sticky .btn{flex:1;min-width:0}
 .sticky-tel{display:inline-flex;align-items:center;justify-content:center;flex:none;
   width:48px;height:48px;border-radius:var(--r);border:1.5px solid var(--cta);color:var(--cta)}
-@media(max-width:1024px){.sticky{display:flex}body{padding-bottom:76px}}
+/* The bar is revealed only once the hero's primary CTA has scrolled out of
+   view. At the top of the page that CTA is visible, so the bar has no job and
+   would otherwise cover the hero trust line. `body` padding is unchanged at
+   both states, so nothing shifts. */
+@media(max-width:1024px){
+  .sticky{display:flex;visibility:hidden;transform:translateY(100%);
+    transition:transform .18s ease,visibility 0s linear .18s}
+  .sticky.is-on{visibility:visible;transform:translateY(0);
+    transition:transform .18s ease,visibility 0s linear 0s}
+  body{padding-bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){.sticky,.sticky.is-on{transition:none}}
 
 
 

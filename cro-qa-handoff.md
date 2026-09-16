@@ -1,5 +1,271 @@
 # CRO and Design QA Handoff — FlowBots.ai
 
+## REVISION — 2026-09-16, Stage 8 fourth pass: focus ring on the accent band
+
+**Source:** one Class A confirmed issue from `/nymph-cro-ab`, found while re-verifying the rail
+contrast fix. **Pre-existing, not a regression from that fix.**
+
+**The finding.** `:focus-visible{outline:3px solid var(--cta)}` renders `#267B96` against
+`BG-ACCENT` `#2E96B7` at **1.41:1**, where WCAG 1.4.11 requires **3:1** for a focus indicator.
+Section 15 is the final CTA, so a keyboard user could not see which control they were on at the last
+conversion point.
+
+**Root cause — the same shape as the rail ink, one pass earlier.** A single global declaration
+served five grounds with no per-ground override. The token is not wrong; it is right on four grounds
+and wrong on one.
+
+**One correction to the finding, recorded per §17.** It reported the primary CTA as less severe,
+because its ring reads against the dark fill at 3.76 on the inner edge. **`outline-offset:2px` puts
+a 2px gap between the button edge and the ring, and that gap shows the band.** The ring's adjacent
+colour is the band on *both* edges, for *both* buttons, so both failed equally at 1.41. The primary
+was worse than reported, not better. The fix and its scope are unchanged.
+
+**The change.** `.on-accent :focus-visible{outline-color:var(--ink)}` — `#0A1628`, **5.32:1** on the
+band. An existing token; no new colour introduced.
+
+**Candidates measured before choosing, against `#2E96B7`:**
+
+| Ring | vs band | Note |
+|---|---|---|
+| `#267B96` `--cta` (was) | 1.41 | Fails |
+| `#FFFFFF` | 3.41 | Passes — and 3.41 is the ceiling for *any* light colour on this teal |
+| `#123243` | 3.94 | Passes, thin |
+| `#0E2334` `--ink-accent` | 4.71 | Passes |
+| **`#0A1628` `--ink`** | **5.32** | **Chosen — the criterion measures the ring against what it abuts, and this nearly doubles it** |
+
+### Verified under real keyboard input, not programmatic focus
+
+The finding warned that `.focus()` does not match `:focus-visible`. Both buttons were reached with
+actual `Tab` presses and `matches(':focus-visible')` was confirmed `true` before anything was
+measured.
+
+| Button | Fill | Ring resolved | vs band | Verdict |
+|---|---|---|---|---|
+| Primary, *Book My Free Discovery Call* | `#0A1628` | `rgb(10,22,40)` | **5.32** | PASS |
+| Secondary, *Call (504) 717-4837* | transparent | `rgb(10,22,40)` | **5.32** | PASS |
+
+**Every ground re-probed, to confirm only the accent band changed:**
+
+| Ground | Ring resolved | Ratio | Verdict |
+|---|---|---|---|
+| `BG-BASE` `#FFFFFF` | `#267B96` | 4.82 | Unchanged |
+| `BG-SOFT` `#F1F5F7` | `#267B96` | 4.39 | Unchanged |
+| `BG-DARK` `#0A1628` | `#267B96` | 3.76 | Unchanged |
+| **`BG-ACCENT` `#2E96B7`** | **`#0A1628`** | **5.32** | **Fixed** |
+| `BG-FOOTER` `#071120` | `#267B96` | 3.92 | Unchanged |
+
+### Gate verdicts after the change
+
+| Gate | Verdict | Evidence |
+|---|---|---|
+| 1 Backgrounds | `PASS` | 16 sections, `adjacentSameBg = 0`. No background token touched |
+| 2 Spacing | `PASS` | Untouched. No geometry changed |
+| 3 CTA system | `PASS` | One spec `48/24px/16px/600/6px`, one label, 0 tap targets under 44px |
+| 4 AI slop | `PASS` | No new visual pattern. One outline colour overridden on one band, using an existing token |
+
+**Page-wide after the change:** 346 text elements checked, **0 contrast failures**. The 30 rail
+instances from the previous pass still show **0 failures**. Zero heading skips, zero horizontal
+overflow. The sticky bar is untouched and behaving correctly for its scroll position.
+
+**What could not be captured:** the browser pane stopped rendering and every screenshot attempt
+timed out, so **there is no visual confirmation in this pass — only measurement.** The measurements
+were taken under real keyboard focus with `:focus-visible` verified, which is the evidence the
+finding asked for, but the visual check is genuinely missing and is not being claimed.
+
+**Not deployed.** Local edit only. `style.css?v=17`.
+
+```text
+STATUS: PENDING INDEPENDENT CRO QA — DO NOT RELEASE AS "OPTIMIZED" YET.
+```
+
+---
+
+## REVISION — 2026-09-16, Stage 8 third pass: rail contrast on the accent band
+
+**Source:** one Class A confirmed issue from `/nymph-cro-ab`, open across the previous two passes
+and now in scope.
+
+**The finding.** `.rail-n` (13px/700) and `.rail-l` (12px/600) rendered `#12303F` on `#2E96B7` =
+**4.05:1**, against 4.5:1 required. Neither qualifies as large text. Only these two failed, because
+section 15 is the only band on `BG-ACCENT` — and it is the final CTA. Low-vision visitors lost the
+wayfinding marker at the last conversion point on the page.
+
+**Root cause, not the symptom.** The colour was a **hardcoded hex** on one selector rather than a
+token. That is why the earlier `--ink-3` repair, which moved 4.06 to 5.01, never reached it: it was
+not on the token path any sweep would follow.
+
+**The change.** `--ink-accent:#0E2334` added beside the other ink tokens with its measured ratio in
+the comment, and the selector now points at it. **No hardcoded `#12303F` remains in the stylesheet.**
+
+**Why `#0E2334` and not the full ink.** Candidates measured against `#2E96B7` before choosing:
+
+| Colour | Ratio | Verdict |
+|---|---|---|
+| `#12303F` (was) | 4.05 | Fails |
+| `#0F2636` | 4.56 | Passes on 0.06 headroom — too thin |
+| **`#0E2334`** | **4.71** | **Chosen** |
+| `#0D2030` | 4.87 | Passes, darker than needed |
+| `--ink` `#0A1628` | 5.32 | Passes, but already carries the headings and the secondary button on this ground, so the rail would stop reading as secondary (SOP §4) |
+| `#FFFFFF` | 3.41 | Fails |
+
+**Every rail instance re-measured, not just section 15**, per the finding's method note:
+
+| Ground | Rail instances | Ink | Lowest ratio |
+|---|---|---|---|
+| `BG-BASE` `#FFFFFF` | 14 | `#5F7186` | 5.01 |
+| `BG-SOFT` `#F1F5F7` | 8 | `#5F7186` | 4.57 |
+| `BG-DARK` `#0A1628` | 6 | `#A9BED2` | 9.48 |
+| `BG-ACCENT` `#2E96B7` | 2 | `#0E2334` | **4.71** |
+
+**30 instances, 0 failures.**
+
+### Gate verdicts after the change
+
+| Gate | Verdict | Evidence |
+|---|---|---|
+| 1 Backgrounds | `PASS` | 16 sections, 5 distinct grounds, `adjacentSameBg = 0`. No background token altered — the change is an ink token |
+| 2 Spacing | `PASS` | Untouched. No geometry, padding or gap changed |
+| 3 CTA system | `PASS` | One spec `48/24px/16px/600/6px`, one label. The accent band's buttons were already compliant and are unchanged |
+| 4 AI slop | `PASS` | No new visual pattern. One ink token darkened within the existing navy family; no gradient, effect, component or layout introduced |
+
+**Page-wide contrast sweep after the change — 0 failures at every breakpoint:**
+
+| Breakpoint | Text elements checked | Failures |
+|---|---|---|
+| 375 | 345 | 0 |
+| 430 | 345 | 0 |
+| 768 | 345 | 0 |
+| 1280 | 352 | 0 |
+| 1600 | 352 | 0 |
+
+**§8's contrast row corrected in the same edit.** It had claimed `0 fail` at all five breakpoints
+while these two elements were failing. Leaving a measurement claim the page contradicts is the
+defect that let this sit open.
+
+**Untouched, per scope:** the sticky bar, verified clean by Nymph on eight entry paths. Confirmed
+still hidden at scroll-top with its class unchanged.
+
+**Not deployed.** Local edit only. `style.css?v=16`.
+
+```text
+STATUS: PENDING INDEPENDENT CRO QA — DO NOT RELEASE AS "OPTIMIZED" YET.
+```
+
+---
+
+## REVISION — 2026-09-16, Stage 8 second pass: sticky bar state on non-scroll entry
+
+**Source:** one Class A confirmed issue from `/nymph-cro-ab`. **A regression introduced by the
+previous revision below**, found on re-verification.
+
+**The finding.** The bar did not appear for anyone arriving anywhere other than scroll-top. Loading
+`/#trace` landed at scrollY 6067 with the hero CTA at -5441 and the bar still hidden. Clicking the
+hero's own secondary CTA, *See the process*, did the same. It corrected only after the visitor
+happened to scroll.
+
+**Root cause, stated correctly this time.** Not "hash jumps were missed" but **the sync was bound to
+too narrow an event set**. The state must match the hero CTA's visibility at all times, and three
+things reposition a page without firing a scroll event: a hash jump on load, an in-page anchor, and
+a back or forward restore.
+
+**The change.** `syncBar` now also runs on `hashchange`, on `pageshow`, and on `load`, each through a
+settle that re-reads after one animation frame because a hash jump repositions the page after the
+current frame. One mechanism extended; no second mechanism added.
+
+**Why `IntersectionObserver` was not reinstated.** It is the better-suited tool and it could not be
+verified in the review environment. Unverifiable code is what produced this regression, so the
+explicit event set was chosen and every path below was exercised rather than argued.
+
+### Verified — every entry path exercised, 375 x 812 unless stated
+
+| # | Entry path | Bar state | Correct |
+|---|---|---|---|
+| 1 | Deep link `/#trace` on load, no scroll input | `is-on`, visible at 743 | Yes |
+| 2 | Click hero secondary CTA `href="#trace"` | `is-on`, visible | Yes |
+| 3 | Normal load at top | hidden; trust line unoccluded, hit test returns the rating | Yes |
+| 4 | Browser back after a hash jump | hidden, hero CTA back in view | Yes |
+| 5 | Real scroll wheel down, then back up | reveals, then hides | Yes |
+| 6 | Deep link at 768 x 900 | `is-on`, visible | Yes |
+| 7 | Top of page at 768 x 900 | hidden, trust unoccluded | Yes |
+
+**Cases 1, 2 and 5 were driven by real input or real navigation, not by dispatched events.** The
+previous pass verified with synthetic events, which could not have exercised the deep-link path at
+all. That is why the regression reached QA.
+
+### Gate verdicts after the change
+
+| Gate | Verdict | Evidence |
+|---|---|---|
+| 1 Backgrounds | `PASS` | 16 sections, `adjacentSameBg = 0`. No token changed |
+| 2 Spacing and fold | `PASS` | Trust line 736-755px unoccluded at scroll-top, hit test returns the rating. Bar hidden on arrival at both breakpoints |
+| 3 CTA system | `PASS` | One spec `48/24px/16px/600/6px`, one label, zero tap targets under 44px, zero horizontal overflow |
+| 4 AI slop | `PASS` | No visual change in this pass. Event wiring only |
+
+**Also unchanged:** zero heading skips, zero images missing dimensions, bar still absent from the tab
+order while hidden.
+
+**Still open and deliberately untouched:** the two rail elements on the accent band at 4.05:1 against
+4.5:1 required. Out of scope for this revision, and §8's "0 fail" contrast row remains inaccurate
+until it is addressed.
+
+**Not deployed.** Local edit only. `app.js?v=13`.
+
+```text
+STATUS: PENDING INDEPENDENT CRO QA — DO NOT RELEASE AS "OPTIMIZED" YET.
+```
+
+---
+
+## REVISION — 2026-09-16, Stage 8: sticky bar no longer covers the hero trust line
+
+**Source:** one Class A confirmed issue from `/nymph-cro-ab`, measured.
+
+**The finding.** At 375 x 812 the fixed sticky CTA bar occupied 743-812px at `z-index:90` while the
+hero trust line (`.hero-trust`, the 4.9 rating) sat at 736-755px. `document.elementFromPoint` at the
+rating's centre returned `DIV.sticky`. **65% of it was painted over.** Gate 2's own earlier repair
+had moved that element into the hero specifically to put it above the fold beside the primary CTA;
+the bar nullified the repair at the decision point.
+
+**Root cause, not symptom.** The bar was displayed at scroll-top, where it has no job. Its purpose
+is keeping the primary action reachable *after* the hero CTA scrolls away. At scroll position zero
+that CTA is fully visible, so the bar was simultaneously redundant and destructive.
+
+**The change.** The bar is now revealed only once the hero's primary CTA has left the viewport.
+
+- `.sticky` at <=1024px is `visibility:hidden` and `translateY(100%)`; `.sticky.is-on` restores it
+- Driven by the **existing throttled rAF scroll handler** that already powers scroll-depth tracking,
+  plus a `resize` listener and one call on load. No second mechanism was introduced
+- `body{padding-bottom:76px}` is **identical in both states**, so nothing shifts
+- Transition is `transform` only, `.18s ease`, matching `.q .chev`; disabled under
+  `prefers-reduced-motion`
+- `visibility:hidden` keeps the bar **out of the tab order while hidden** — verified, no phantom
+  focus stop
+
+**Implementation note.** The first attempt used `IntersectionObserver`. It was replaced because the
+observer could not be verified in the review environment, and because the page already owns a
+throttled scroll handler — reusing it is one mechanism rather than two.
+
+### Gate verdicts after the change — measured at 375 x 812 and 768 x 900
+
+| Gate | Verdict | Evidence |
+|---|---|---|
+| 1 Backgrounds | `PASS` | 16 sections, `adjacentSameBg = 0`. No token changed |
+| 2 Spacing and fold | `PASS` | Primary CTA bottom 626px, trust bottom 755px, fold 812px, **bar hidden at scroll-top so nothing overlays either**. `elementFromPoint` at the rating returns the rating. Layout shift on reveal: **0** |
+| 3 CTA system | `PASS` | Every rendered primary CTA, sticky bar included, in both states: **one spec, `48/24px/16px/600/6px`**, and **one label**. Tap targets 48x48 and 277x48, zero under 44px |
+| 4 AI slop | `PASS` | One functional state change on one element, `transform` only, reduced-motion respected. Not a decorative reveal and not applied to any section |
+
+**Unchanged and still open — not touched, because Stage 8 revises only what QA named:** the two
+rail elements on the accent band measuring 4.05:1 against 4.5:1 required. That is a separate finding
+and §8's "0 fail" contrast row remains inaccurate until it is addressed.
+
+**Not deployed.** Local edit only. `style.css?v=15`, `app.js?v=12`.
+
+```text
+STATUS: PENDING INDEPENDENT CRO QA — DO NOT RELEASE AS "OPTIMIZED" YET.
+```
+
+---
+
 **Date:** 2026-09-08
 **Page:** Homepage — "Runbook" direction
 **Prepared by:** Rune v2 (`/runev2-web-designer`)
@@ -91,8 +357,15 @@ The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 
 | Element | Bottom edge |
 |---|---|
 | Primary CTA | 626px *(was 600px before the 2026-09-15 spacing revision)* |
-| **Trust element** (4.9 rating) | **758px** *(was 732px)* |
+| **Trust element** (4.9 rating) | **755px**, re-measured 2026-09-16 *(recorded as 758px on 2026-09-15)* |
 | Fold | **812px** |
+| **Sticky bar, when shown** | **occupies 743-812px** |
+
+**The fold table alone is not sufficient and was not, before 2026-09-16.** A fixed bar at the foot of
+the viewport reduces the *effective* fold to 743px while it is displayed, and the trust element at
+755px sat underneath it. The bar is now hidden at scroll-top, so at first view the effective fold and
+the real fold are the same 812px and nothing overlays the hero. **Any future element placed between
+743px and 812px must be checked against the bar's shown state, not only against the fold.**
 
 *Only the CTA and trust edges were re-measured on 2026-09-15. The H1, supporting line and microcopy rows from the earlier measurement were removed rather than carried over as if still current.*
 
@@ -206,6 +479,13 @@ The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 
 | 1280 | 0 | 0 fail | 0 fail | 0 skips | 0 missing |
 | 1600 | 0 | 0 fail | 0 fail | 0 skips | 0 missing |
 
+> **This contrast column was wrong until 2026-09-16 and is now re-measured.** It read `0 fail`
+> while **two elements failed** — the rail number and label on the accent band, at 4.05:1 against
+> 4.5:1 required. The row was not a measurement; it was an assumption that survived five
+> breakpoints because nothing re-checked it. The figures above are now a fresh sweep of 345 text
+> elements at 375/430/768 and 352 at 1280/1600, resolving each element's own computed colour
+> against its nearest painted ancestor background. **0 failures at every breakpoint.**
+
 - Single `h1`. Semantic `header` / `main` / `footer`, skip link, visible focus ring on every interactive element.
 - Errors are carried by border colour **and** a text message, never colour alone.
 - Every image has explicit `width`/`height` and `loading="lazy"` below the fold, so nothing shifts on load.
@@ -262,7 +542,7 @@ The previous values were `SPACE-M` 24/24/20 · `SPACE-L` 40/32/28 · `SPACE-XL` 
 |---|---|---|
 | RT-01 Adjacent backgrounds | PASS | `adjacentSameBg = 0`, measured at 375 / 768 / 1600 |
 | RT-02 Missing background map | PASS | §3 above, all seven columns filled for 16 rows |
-| RT-03 100vh hero | PASS | Hero content-driven; CTA bottom 600px, trust 732px, fold 812px |
+| RT-03 100vh hero | PASS | Hero content-driven; CTA bottom 626px, trust 755px, fold 812px, sticky bar hidden at scroll-top. **Re-measured 2026-09-16 — this row previously carried the pre-revision 600/732 figures** |
 | RT-04 Unexplained padding | PASS | Every section padding is a token; nothing exceeds `SPACE-2XL`; the single `SPACE-2XL` use is documented |
 | RT-05 Isolated CTA | PASS | CTA-to-supporting-text gap is `SPACE-S`/`SPACE-M` at all primary placements |
 | RT-06 Inconsistent CTA component | PASS **after repair** | One spec per breakpoint, measured. Sticky bar rebuilt |
