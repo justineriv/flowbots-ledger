@@ -445,9 +445,6 @@ svg.i{width:16px;height:16px;flex:none}
   border-bottom:1px solid #172C46;font-size:11px}
 .cc-bar em{width:9px;height:9px;border-radius:50%;background:#2B3F5B;flex:none}
 .cc-bar .u{margin-left:8px;color:var(--on-dark-2);font-style:normal}
-.cc-bar .lv{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;
-  border-radius:999px;background:#123449;color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em}
-.cc-bar .lv s{width:6px;height:6px;border-radius:50%;background:#4ADE80;text-decoration:none}
 
 .cc-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px;
   background:#060E1C}
@@ -552,13 +549,13 @@ svg.i{width:16px;height:16px;flex:none}
 .motion-on .cc-a:nth-of-type(2){animation-delay:.55s}
 .motion-on .cc-a:nth-of-type(3){animation-delay:.75s}
 .motion-on .cc-a:nth-of-type(4){animation-delay:.95s}
-.motion-on .cc-bar .lv s,.motion-on .cc-c em s{animation:ccPulse 2.4s ease-in-out infinite}
+.motion-on .cc-c em s{animation:ccPulse 2.4s ease-in-out infinite}
 .motion-on .cc-c:nth-child(2) em s{animation-delay:.4s}
 .motion-on .cc-c:nth-child(3) em s{animation-delay:.8s}
 .motion-on .cc-c:nth-child(4) em s{animation-delay:1.2s}
 .motion-on .cc-wave i{transform-origin:bottom;animation:ccWave 1.15s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){
-  .motion-on .cc-t,.motion-on .cc-a,.motion-on .cc-bar .lv s,
+  .motion-on .cc-t,.motion-on .cc-a,
   .motion-on .cc-c em s,.motion-on .cc-wave i{animation:none}
 }
 
